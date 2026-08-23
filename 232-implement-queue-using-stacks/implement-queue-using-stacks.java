@@ -6,32 +6,27 @@ class MyQueue {
         
     }
     
-    public void push(int x) {
-        
-        st.push(x);
-    }
-    
-    public int pop() {
-        while(st.size()>1){
+    public void push(int x) {    //pop and peek efficient approach 
+        while(st.size()>0){
             helper.push(st.pop());
         }
-        int front=st.pop();
+        st.push(x);
+        
         while(helper.size()>0){
             st.push(helper.pop());
         }
-        return front;
+
+    }
+    
+    public int pop() {
+        
+        return st.pop();
         
     }
     
     public int peek() {
-         while(st.size()>1){
-            helper.push(st.pop());
-        }
-        int front=st.peek();
-        while(helper.size()>0){
-            st.push(helper.pop());
-        }
-        return front;
+  
+        return st.peek();
         
 
         
