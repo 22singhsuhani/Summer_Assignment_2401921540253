@@ -13,7 +13,7 @@ class Solution {
                 count=0;
             }
 
-            max=Math.max(max,count);
+            max=Math.max(max,count); //sath sath maintain h , counts max consecutive 1 jbtk 0 ho 
         }
 
         return max;
