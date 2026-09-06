@@ -1,35 +1,29 @@
-import java.util.*;
-
 class Solution {
-    public List<Integer> spiralOrder(int[][] matrix) {
-        List<Integer> ans = new ArrayList<>();
-
-        int top = 0, bottom = matrix.length - 1;
-        int left = 0, right = matrix[0].length - 1;
-
-        while (top <= bottom && left <= right) {
-
-            for (int j = left; j <= right; j++)
-                ans.add(matrix[top][j]);
-            top++;
-
-            for (int i = top; i <= bottom; i++)
-                ans.add(matrix[i][right]);
-            right--;
-
-            if (top <= bottom) {
-                for (int j = right; j >= left; j--)
-                    ans.add(matrix[bottom][j]);
-                bottom--;
-            }
-
-            if (left <= right) {
-                for (int i = bottom; i >= top; i--)
-                    ans.add(matrix[i][left]);
-                left++;
-            }
-        }
-
+    public List<Integer> spiralOrder(int[][] mat) {
+        ArrayList<Integer> ans = new ArrayList<>();
+        int m=mat.length;
+        int n=mat[0].length;
+        int fc=0, fr=0, lc=n-1 , lr=m-1;
+        int tne=m*n;
+        while(fc<=lc && fr<=lr){
+            for(int j=fc;j<=lc;j++)
+                ans.add(mat[fr][j]);
+            fr++;
+            if(ans.size()==tne)break;
+            for(int i=fr;i<=lr;i++)
+                ans.add(mat[i][lc]);
+            lc--;
+            if(ans.size()==tne)break;
+            for(int j=lc;j>=fc;j--)
+                ans.add(mat[lr][j]);
+            lr--;
+            if(ans.size()==tne)break;
+            for(int i=lr;i>=fr;i--)
+                ans.add(mat[i][fc]);
+            fc++;
+        } 
         return ans;
+
+
     }
 }
