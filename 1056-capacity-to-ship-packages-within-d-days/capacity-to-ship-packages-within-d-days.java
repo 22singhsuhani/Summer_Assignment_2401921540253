@@ -17,19 +17,19 @@ class Solution {
         int currweight=0;
 
         for(int weight:weights){   // summing up
-            if(currweight+weight > mid){
-                reqdays++;
+            if(currweight+weight > mid){    
+                reqdays++;  
                 currweight=weight;
             }
             else{
                 currweight+=weight;
             }
         }
-        if(reqdays <=days){
+        if(reqdays <=days){    //aur time h to reduce days
             right=mid-1;
         }
         else{
-            left=mid+1;
+            left=mid+1;   //inc days (mid is insufficient)
         }
 
     }
