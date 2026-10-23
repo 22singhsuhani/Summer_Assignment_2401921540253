@@ -9,11 +9,11 @@ class Solution { //sum of subarray max=sum of subarray min
 
     for(int i=0;i<=n;i++){
         while(!st.isEmpty() && (i==n ||
-        (max? a[st.peek()] < a[i]: a[st.peek()] > a[i]))){
+        (max? a[st.peek()] < a[i]: a[st.peek()] > a[i]))){  //curr ele max h ki min ?
 
-            int idx=st.pop();
-            int left=st.isEmpty()? idx+1:idx-st.peek();
-            int right=i-idx;
+            int idx=st.pop();                            
+            int left=st.isEmpty()? idx+1:idx-st.peek();   //how many left choices for curr ele
+            int right=i-idx;    //count how many right choices for curr ele
 
             sum+= (long) a[idx]* left*right;
         }
