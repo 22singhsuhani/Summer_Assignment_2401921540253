@@ -11,21 +11,30 @@
  *         this.left = left;
  *         this.right = right;
  *     }
- * }
+ * }   //ITERATIVE APPROACH(STACK)
  */
-
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> ans = new ArrayList<>();
-        inorder(root, ans);
-        return ans;
-    }
-
-    private void inorder(TreeNode node, List<Integer> ans) {
-        if (node == null) return;
-
-        inorder(node.left, ans);
-        ans.add(node.val);
-        inorder(node.right, ans);
+        ArrayList <Integer> ans=new ArrayList<>();
+        Stack<TreeNode> st=new Stack<>();
+        TreeNode curr=root;
+        while(st.size()>0 || curr!=null)
+        {
+        if(curr!=null){
+            if(curr.left!=null){
+                st.push(curr);
+                curr=curr.left;
+            }
+            else{
+                ans.add(curr.val);
+                curr=curr.right;
+            }
+        }else{  //curr==null
+        TreeNode top=st.pop();
+        ans.add(top.val);
+        curr=top.right;
+        }
+        }
+    return ans;   
     }
 }
